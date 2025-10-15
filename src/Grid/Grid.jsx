@@ -1,11 +1,19 @@
 import "./Grid.css"
 import Card from "../Card/Card.jsx"
+import {images} from '../data.js'
+import React from "react"
 export default function Grid(){
+    const [count, setCount] = React.useState(0)
     return(
-        <div className="container">
-            <Card src="/img/React.jpg" alt="card 1"/>
-            <Card src="/img/Java.jpg" alt="card 2"/>
-            <Card src="/img/Python.jpg" alt="card 3"/>
+        <>
+            <div>Количество открытых карточек: {count}</div>
+            <div className="container">
+            {
+                images.map((item)=>(
+                    <Card key={item.id} src={item.url} alt="" count={count} setCount={setCount}/>
+                ))
+            }
         </div>
+        </>
     )
 }
